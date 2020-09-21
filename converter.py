@@ -57,9 +57,11 @@ def checkFile(path):
                                   codecName)
                             notify(
                                 "❌ Error don't know how to re-encode *{}* for:```{}```".format(codecName, path))
-                        reencode(path, newCodec, codecName)
-                        # Break so this file wont trigger twice if multiple audio tracks
-                        break
+
+                        if not newCodec == None:
+                            reencode(path, newCodec, codecName)
+                            # Break so this file wont trigger twice if multiple audio tracks
+                            break
 
 
 def reencode(path, newCodec, oldCodec):
