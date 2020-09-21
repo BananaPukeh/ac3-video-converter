@@ -17,9 +17,8 @@ docker run -d \
 -v /path/to/tvshows:/library/tvshows \
 -v /path/to/movies:/library/movies \
 -e libraries="/library/tvshows;/library/movies" \
--e interval=3600 \
 --restart unless-stopped \
-rutgernijhuis/ac3-converter
+rutgernijhuis/ac3-video-converter
 ```
 
 In the above command there are two libraries mounted. On the host the library `/path/to/tvshows/` is the location where the media lives, this is mapped to `/library/tvshows` in the container. You can add as many libraries as you want, but you need to specify the mapped paths in the environment variable `libraries` delimitted by a semicolon: (`;`) as shown.
