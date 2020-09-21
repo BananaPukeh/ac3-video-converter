@@ -4,7 +4,7 @@ This is a tool for automatically converting your media library to AC3 or EAC3 au
 
 ## Features
 - Convert `AAC` to `AC3`
-- Convert `DTS`, `DTS-HD` and `HE-AAC` to `EAC3`
+- Convert `DTS`, `DTS-HD`, `OPUS` and `HE-AAC` to `EAC3`
 - Converts all audio tracks in the file
 - Keeps all subtitles
 - Add multiple library paths (see below)

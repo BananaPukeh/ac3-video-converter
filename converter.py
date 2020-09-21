@@ -50,6 +50,8 @@ def checkFile(path):
                             newCodec = "eac3"
                         elif codecName == "dts":
                             newCodec = "eac3"
+                        elif codecName == "opus":
+                            newCodec = "eac3"
                         else:
                             print("Error, don't know how to re-encode %s" %
                                   codecName)
