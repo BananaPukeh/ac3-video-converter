@@ -1,5 +1,6 @@
 # AC3 Video Converter
 This is a tool for automatically converting your media library to AC3 or EAC3 audio codec. It uses FFMPEG to convert the files.
+*The AC3 codec stands for Dolby Digital and the EAC3 codec stands for Dolby Digital Plus.*
 
 ## Features
 - Convert `AAC` to `AC3`
@@ -35,12 +36,23 @@ In the above command there are two libraries mounted. On the host the library `/
 # Running it locally
 If you want to run it locally, I suppose you know what you are doing.
 
+**Prerequisites**
+- Python 3
+- FFMPEG (also in your path)
+
 Tested on Python 3.8.5
 
 `pip install -r requirements.txt`
+
 
 Note Before running:
 
 The script uses environment variables to locate your library, interval time and other settings. Make sure the script can find them.
 For testing purposes it is reccomended to use `./demo_libraries/movies;./demo_libraries/shows` as value for `libraries` with your own content.
+
 I used VSCode for developing and added them to `./vscode/launch.json`
+
+
+
+
+*Dolby Digital, Dolby Digital Plus and Dolby TrueHD are trademarks of Dolby Laboratories.*
