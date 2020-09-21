@@ -37,31 +37,35 @@ def checkFile(path):
     extension = Path(path).suffix
     if extension in validExtensions:
         # Check if this file needs converting
-        probeRes = ffmpeg.probe(path)
-        for stream in probeRes["streams"]:
-            if stream["codec_type"] == "audio":
-                if stream["channels"] > 2 or True:  # Disabled for now
-                    # print("More than two channels found!")
-                    codecName = stream["codec_name"]
-                    if not codecName in desiredCodecs:
-                        if codecName == "aac":
-                            newCodec = "ac3"
-                        elif codecName == "he-aac":
-                            newCodec = "eac3"
-                        elif codecName == "dts":
-                            newCodec = "eac3"
-                        elif codecName == "opus":
-                            newCodec = "eac3"
-                        else:
-                            print("Error, don't know how to re-encode %s" %
-                                  codecName)
-                            notify(
-                                "❌ Error don't know how to re-encode *{}* for:```{}```".format(codecName, path))
 
-                        if not newCodec == None:
-                            reencode(path, newCodec, codecName)
-                            # Break so this file wont trigger twice if multiple audio tracks
-                            break
+        try:
+            probeRes = ffmpeg.probe(path)
+            for stream in probeRes["streams"]:
+                if stream["codec_type"] == "audio":
+                    if stream["channels"] > 2 or True:  # Disabled for now
+                        # print("More than two channels found!")
+                        codecName = stream["codec_name"]
+                        if not codecName in desiredCodecs:
+                            if codecName == "aac":
+                                newCodec = "ac3"
+                            elif codecName == "he-aac":
+                                newCodec = "eac3"
+                            elif codecName == "dts":
+                                newCodec = "eac3"
+                            elif codecName == "opus":
+                                newCodec = "eac3"
+                            else:
+                                print("Error, don't know how to re-encode %s" %
+                                      codecName)
+                                notify(
+                                    "❌ Error don't know how to re-encode *{}* for:```{}```".format(codecName, path))
+
+                            if not newCodec == None:
+                                reencode(path, newCodec, codecName)
+                                # Break so this file wont trigger twice if multiple audio tracks
+                                break
+        except:
+            print("Failed to probe {}".format(path))
 
 
 def reencode(path, newCodec, oldCodec):
