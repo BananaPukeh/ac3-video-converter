@@ -31,3 +31,16 @@ In the above command there are two libraries mounted. On the host the library `/
 | replace_original | No       | true    | Should the original file be replaced? Mostly used for testing |
 | telegram_token   | No       | ""      | Telegram bot token                                            |
 | telegram_chat_id | No       | ""      | Telegram chat id                                              |
+
+# Running it locally
+If you want to run it locally, I suppose you know what you are doing.
+
+Tested on Python 3.8.5
+
+`pip install -r requirements.txt`
+
+Note Before running:
+
+The script uses environment variables to locate your library, interval time and other settings. Make sure the script can find them.
+For testing purposes it is reccomended to use `./demo_libraries/movies;./demo_libraries/shows` as value for `libraries` with your own content.
+I used VSCode for developing and added them to `./vscode/launch.json`
