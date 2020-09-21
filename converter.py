@@ -112,7 +112,8 @@ def notify(message):
 
     if not bot_token == "" and not bot_chatID == "":
         send_text = 'https://api.telegram.org/bot' + bot_token + \
-            '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + message
+            '/sendMessage?disable_notification=true&chat_id=' + \
+            bot_chatID + '&parse_mode=Markdown&text=' + message
 
         _ = requests.get(send_text)
 
