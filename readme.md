@@ -19,6 +19,7 @@ docker run -d \
 -v /path/to/movies:/library/movies \
 -e libraries="/library/tvshows;/library/movies" \
 --restart unless-stopped \
+--user ${id -u}:${id -g} \
 rutgernijhuis/ac3-video-converter
 ```
 
