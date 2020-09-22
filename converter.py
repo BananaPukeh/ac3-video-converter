@@ -54,6 +54,8 @@ def checkFile(path):
                                 newCodec = "eac3"
                             elif codecName == "opus":
                                 newCodec = "eac3"
+                            elif codecName == "flac":
+                                newCodec = "eac3"
                             else:
                                 print("Error, don't know how to re-encode %s" %
                                       codecName)
@@ -77,7 +79,7 @@ def reencode(path, newCodec, oldCodec):
     fileName = Path(path).stem
     outputPath = os.path.join(folder, "converted.mkv")
 
-    notify("⚡ Start re-encoding *{}* to *{}*```{}```".format(oldCodec, newCodec, fileName))
+    # notify(" Start re-encoding *{}* to *{}*```{}```".format(oldCodec, newCodec, fileName))
 
     startTime = time.time()
     # Go with an direct subprocess because the python-ffmpeg api is kindoff vague
@@ -99,6 +101,9 @@ def reencode(path, newCodec, oldCodec):
 
     if not os.path.exists(outputPath):
         notify("❌ Failed to convert!")
+
+    if Path(outputPath).stat().st_size == 0:
+        notify("❌ Output file is empty, conversion failed")
     else:
         # Replace original file
         if replaceOriginal:
@@ -110,8 +115,8 @@ def reencode(path, newCodec, oldCodec):
 
         duration = int(time.time() - startTime)
 
-        notify("✅ Done re-encoding *{}* to *{}* in {} sec```{}```".format(oldCodec,
-                                                                          newCodec, duration, fileName))
+        notify("⚡ Re-encoded *{}* to *{}* in {} sec```{}```".format(oldCodec,
+                                                                    newCodec, duration, fileName.replace("/", "-")))
 
 
 def notify(message):
