@@ -104,6 +104,8 @@ def reencode(path, newCodec, oldCodec):
 
     if Path(outputPath).stat().st_size == 0:
         notify("❌ Output file is empty, conversion failed")
+        # Now remove failed file
+        os.remove(outputPath)
     else:
         # Replace original file
         if replaceOriginal:
