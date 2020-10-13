@@ -103,7 +103,7 @@ def reencode(path, newCodec, oldCodec):
         notify("❌ Failed to convert!")
 
     if Path(outputPath).stat().st_size == 0:
-        notify("❌ Output file is empty, conversion failed")
+        notify("❌ Output file is empty, conversion failed.\n{}".format(path))
         # Now remove failed file
         os.remove(outputPath)
     else:
